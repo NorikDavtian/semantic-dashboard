@@ -5,7 +5,8 @@
   "dependencies": {
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "semantic-ui-react": "^0.68.5"
+    "semantic-ui-css": "^2.2.12",
+    "semantic-ui-react": "^0.72.0"
   },
   "devDependencies": {
     "eslint": "^3.19.0",
@@ -17,11 +18,13 @@
     "react-scripts": "0.9.5"
   },
   "scripts": {
-    "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "precommit": "lint-staged"
+    "fixit": "eslint src/ --fix",
+    "lint": "eslint src/",
+    "precommit": "lint-staged",
+    "start": "react-scripts start",
+    "test": "react-scripts test --env=jsdom"
   },
   "lint-staged": {
     "*.js": [
