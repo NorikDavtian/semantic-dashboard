@@ -1,3 +1,8 @@
+# Semantic Dashboard
+A cheesy take on building a useful dashboard with all the bells and whistles of react semantic-ui.
+
+
+## From le old create-react-app
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
