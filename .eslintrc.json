@@ -1,0 +1,31 @@
+{
+  "extends": [
+    "react-app",
+    "airbnb"
+  ],
+  "plugins": [
+    "react",
+    "jsx-a11y",
+    "import",
+    "flowtype"
+  ],
+  "rules": {
+    "comma-dangle": [
+      2,
+      "never"
+    ],
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [
+          ".js",
+          ".jsx"
+        ]
+      }
+    ],
+    "react/forbid-prop-types": [
+      0
+    ],
+    "no-console": 0
+  }
+}
