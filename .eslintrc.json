@@ -23,6 +23,9 @@
         ]
       }
     ],
+    "react/no-unescaped-entities": [
+      0
+    ],
     "react/forbid-prop-types": [
       0
     ],
