@@ -12,6 +12,7 @@ import {
   Segment,
   Visibility
 } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 
 const FixedMenu = () => (
   <Menu fixed="top" size="large">
@@ -22,7 +23,7 @@ const FixedMenu = () => (
       <Menu.Item as="a">Careers</Menu.Item>
       <Menu.Menu position="right">
         <Menu.Item className="item">
-          <Button as="a">Log in</Button>
+          <Link to="/login"><Button>Log in</Button></Link>
         </Menu.Item>
         <Menu.Item>
           <Button as="a" primary>Sign Up</Button>
@@ -63,7 +64,7 @@ class HomepageLayout extends Component {
                 <Menu.Item as="a">Company</Menu.Item>
                 <Menu.Item as="a">Careers</Menu.Item>
                 <Menu.Item position="right">
-                  <Button as="a" inverted>Log in</Button>
+                  <Link to="/login"><Button inverted>Log in</Button></Link>
                   <Button as="a" inverted style={{ marginLeft: '0.5em' }}>Sign
                     Up</Button>
                 </Menu.Item>
@@ -118,7 +119,6 @@ class HomepageLayout extends Component {
               <Grid.Column floated="right" width={6}>
                 <Image
                   bordered
-                  rounded
                   size="large"
                   src="/assets/images/white-image.png"
                 />

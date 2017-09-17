@@ -8,6 +8,7 @@ import {
   Message,
   Segment
 } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 
 const LoginForm = () => (
   <div className="login-form">
@@ -53,7 +54,7 @@ const LoginForm = () => (
           </Segment>
         </Form>
         <Message>
-          New to us? <a href="">Sign Up</a>
+          New to us? <Link to="/">Sign Up</Link>
         </Message>
       </Grid.Column>
     </Grid>
