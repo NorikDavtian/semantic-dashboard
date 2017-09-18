@@ -4,14 +4,14 @@ Things to do in no particular order.
 Manage project in repos github projects later.
 https://github.com/NorikDavtian/semantic-dashboard/projects
 
-- [ ] Redux store
-- [ ] Routing
-- [ ] DevTools
+- [X] Redux store
+- [X] Routing
+- [X] DevTools
 - [ ] Actions
 - [ ] Components
 - [ ] CSS
  - [ ] Variables
- - [ ] Node Sass
+ - [X] Node Sass
  - [ ] Theme
 - [ ] Server
 - [ ] Mock API
@@ -34,3 +34,14 @@ https://github.com/NorikDavtian/semantic-dashboard/projects
 - [ ] Pages (Group/Solo)
 - [ ] Assets/Files (Group/Solo)
 - [ ] Reports/Analytics (Charts)
+
+# Views
+ - [ ] /
+  - [ ] Homepage
+  - [ ] Admin
+ - [ ] /login
+ - [ ] /page
+ - [ ] /accounts
+  - [ ] /account
+- [ ] menu
+- [ ] sidebar
