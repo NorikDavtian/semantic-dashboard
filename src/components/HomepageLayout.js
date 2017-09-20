@@ -18,7 +18,7 @@ const FixedMenu = () => (
   <Menu fixed="top" size="large">
     <Container>
       <Menu.Item as="a" active>Home</Menu.Item>
-      <Menu.Item as="a">Work</Menu.Item>
+      <Menu.Item as="a"><Link to="/admin">Admin</Link></Menu.Item>
       <Menu.Item as="a">Company</Menu.Item>
       <Menu.Item as="a">Careers</Menu.Item>
       <Menu.Menu position="right">
@@ -60,7 +60,7 @@ class HomepageLayout extends Component {
             <Container>
               <Menu inverted pointing secondary size="large">
                 <Menu.Item as="a" active>Home</Menu.Item>
-                <Menu.Item as="a">Work</Menu.Item>
+                <Menu.Item as="a"><Link to="/admin">Admin</Link></Menu.Item>
                 <Menu.Item as="a">Company</Menu.Item>
                 <Menu.Item as="a">Careers</Menu.Item>
                 <Menu.Item position="right">
