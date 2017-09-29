@@ -1,8 +1,8 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import Admin from './Admin';
-import HomepageLayout from './HomepageLayout';
-import LoginForm from './LoginForm';
+import Admin from '../components/Admin';
+import HomepageLayout from '../components/HomepageLayout';
+import LoginForm from '../components/LoginForm';
 
 const App = () => (
   <div className="App">

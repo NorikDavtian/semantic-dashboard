@@ -4,7 +4,7 @@ import createHistory from 'history/createBrowserHistory';
 import { routerMiddleware } from 'react-router-redux';
 import { createLogger } from 'redux-logger';
 import rootReducer from '../reducers';
-import DevTools from './devTools';
+import DevTools from '../containers/devTools';
 // @todo import api middleware
 
 const configureStore = (preloadedState) => {
