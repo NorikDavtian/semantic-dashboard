@@ -20,6 +20,7 @@ https://github.com/NorikDavtian/semantic-dashboard/projects
 - [ ] Chores (License, contrib, docs, etc)
 - [ ] Demo
 - [ ] Docker
+- [ ] Separate CMS to a different example group maybe
 
 ## Application TODOs
 - [ ] Login
