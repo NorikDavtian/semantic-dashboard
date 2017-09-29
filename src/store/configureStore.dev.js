@@ -4,7 +4,7 @@ import createHistory from 'history/createBrowserHistory';
 import { routerMiddleware } from 'react-router-redux';
 import { createLogger } from 'redux-logger';
 import rootReducer from '../reducers';
-import DevTools from './devTools';
+import DevTools from '../containers/devTools';
 // @todo import api middleware
 
 const configureStore = (preloadedState) => {
@@ -22,15 +22,6 @@ const configureStore = (preloadedState) => {
 
   console.log('Initial state:');
   console.log(store.getState());
-
-  // @todo not tested yet, boilerplate code
-  // if (module.hot) {
-  //   // Enable Webpack hot module replacement for reducers
-  //   module.hot.accept('../reducers', () => {
-  //     const nextRootReducer = rootReducer; // eslint-disable-line global-require
-  //     store.replaceReducer(nextRootReducer);
-  //   });
-  // }
 
   return store;
 };
