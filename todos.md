@@ -7,6 +7,7 @@ https://github.com/NorikDavtian/semantic-dashboard/projects
 - [X] Redux store
 - [X] Routing
 - [X] DevTools
+- [ ] RXjs
 - [ ] Actions
 - [ ] Components
 - [ ] CSS
