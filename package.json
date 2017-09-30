@@ -41,6 +41,7 @@
     "fixit": "eslint src/ --fix",
     "lint": "eslint src/",
     "minify-css": "node-sass src/ -o src/ --output-style compressed",
+    "postinstall": "cp .sample-env .env && echo 'Coppied .sample-env -> .env'",
     "precommit": "lint-staged",
     "start": "npm-run-all -p watch-css start-js",
     "start-js": "react-scripts start",

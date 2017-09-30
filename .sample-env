@@ -1,0 +1,2 @@
+# npm postinstall script will copy .sample-env to .env after `npm install`
+REACT_APP_API_URL=http://localhost:4000
