@@ -37,6 +37,7 @@
     "build": "npm run minify-css && react-scripts build",
     "build-css": "node-sass src/ -o src/ --output-style expanded",
     "clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install",
+    "cp-env-local": "cp .sample-env .env.local && echo 'Coppied .sample-env -> .env.local'",
     "eject": "react-scripts eject",
     "fixit": "eslint src/ --fix",
     "lint": "eslint src/",

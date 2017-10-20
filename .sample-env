@@ -1,2 +1,6 @@
-# npm postinstall script will copy .sample-env to .env after `npm install`
+# npm postinstall script will copy `.sample-env` to `.env` after `npm install`
+# https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#adding-custom-environment-variables
+#
+# to override .env use `npm run cp-env-local` to copy `.sample-env` to `.env.local`
+# https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#what-other-env-files-are-can-be-used
 REACT_APP_API_URL=http://localhost:4000
