@@ -9,7 +9,7 @@ export default class Sidebar extends Component {
     const { activeItem } = this.state || {};
 
     return (
-      <Menu id="sidebar" basic vertical className="toggled">
+      <Menu id="sidebar" vertical className="toggled">
         <Menu.Item>
           <Menu.Header>Products</Menu.Header>
 
