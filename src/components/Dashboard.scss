@@ -1,0 +1,42 @@
+@import "../constants";
+
+#dashboard {
+  .flex-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-content: stretch;
+    align-items: center;
+  }
+
+  .flex-item:nth-child(1) {
+    flex: 0 0 auto;
+    align-self: auto;
+  }
+
+  .flex-item:nth-child(2) {
+    flex: 0.4 1 auto;
+    align-self: auto;
+  }
+
+  .flex-item:nth-child(3) {
+    flex: 0 0 auto;
+    align-self: auto;
+  }
+}
+
+#main {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow-y: auto;
+  min-height: 100vh;
+  padding: 10px;
+  will-change: left;
+  &.toggled {
+    left: $sidebar-width;
+  }
+}
