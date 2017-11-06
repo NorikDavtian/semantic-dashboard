@@ -1,11 +1,21 @@
 import React from 'react';
 import { Button, Input } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import PropTypes from 'prop-types';
+import { toggleSidebar as toggleSidebarAction } from '../actions';
 import './TopNav.css';
 
-const TopNav = () => (
+const TopNav = ({ toggleSidebar }) => (
   <div id="nav-top" className="flex-container">
-    <Button id="menu-button" circular icon="sidebar" className="flex-item" />
+    <Button
+      id="menu-button"
+      className="flex-item"
+      icon="sidebar"
+      circular
+      onClick={toggleSidebar}
+    />
     <Input
       icon="search"
       className="flex-item"
@@ -18,4 +28,12 @@ const TopNav = () => (
   </div>
 );
 
-export default TopNav;
+TopNav.propTypes = {
+  toggleSidebar: PropTypes.func.isRequired
+};
+
+const mapDispatchToProps = dispatch => ({
+  toggleSidebar: bindActionCreators(toggleSidebarAction, dispatch)
+});
+
+export default connect(null, mapDispatchToProps)(TopNav);

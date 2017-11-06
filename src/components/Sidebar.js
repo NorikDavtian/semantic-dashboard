@@ -1,15 +1,22 @@
 import React, { Component } from 'react';
 import { Menu } from 'semantic-ui-react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import './Sidebar.css';
 
-export default class Sidebar extends Component {
+class Sidebar extends Component {
+  static propTypes = {
+    isToggled: PropTypes.bool.isRequired
+  };
+
   handleItemClick = name => this.setState({ activeItem: name });
 
   render() {
+    const { isToggled } = this.props;
     const { activeItem } = this.state || {};
 
     return (
-      <Menu id="sidebar" vertical className="toggled">
+      <Menu id="sidebar" vertical className={isToggled ? 'toggled' : ''}>
         <Menu.Item>
           <Menu.Header>Products</Menu.Header>
 
@@ -91,3 +98,9 @@ export default class Sidebar extends Component {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  isToggled: state.isSidebarToggled
+});
+
+export default connect(mapStateToProps)(Sidebar);

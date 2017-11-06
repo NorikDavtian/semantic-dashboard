@@ -1,12 +1,14 @@
 import React from 'react';
 import { Segment } from 'semantic-ui-react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import TopNav from './TopNav';
 import Sidebar from './Sidebar';
 import './Dashboard.css';
 
-const Dashboard = () => (
+const Dashboard = ({ isToggled }) => (
   <div id="dashboard">
-    <div id="main" className="toggled">
+    <div id="main" className={isToggled ? 'toggled' : ''}>
       <TopNav />
       <Segment basic id="content">
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis,
@@ -19,4 +21,12 @@ const Dashboard = () => (
   </div>
 );
 
-export default Dashboard;
+Dashboard.propTypes = {
+  isToggled: PropTypes.bool.isRequired
+};
+
+const mapStateToProps = state => ({
+  isToggled: state.isSidebarToggled
+});
+
+export default connect(mapStateToProps)(Dashboard);
