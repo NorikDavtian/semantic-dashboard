@@ -11,7 +11,7 @@ https://github.com/NorikDavtian/semantic-dashboard/projects
 - [ ] Actions
 - [ ] Components
 - [ ] CSS
- - [ ] Variables
+ - [X] Variables
  - [X] Node Sass
  - [ ] Theme
 - [ ] Server
