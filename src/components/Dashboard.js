@@ -11,6 +11,7 @@ const Dashboard = ({ isToggled }) => (
     <div id="main" className={isToggled ? 'toggled' : ''}>
       <TopNav />
       <Segment basic id="content">
+        <h2>Dashboard</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis,
           laudantium, quod. Accusantium, ad amet animi asperiores blanditiis
           delectus doloremque, eos modi odio officiis perferendis quae quam

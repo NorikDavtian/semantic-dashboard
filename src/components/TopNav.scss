@@ -1,7 +1,26 @@
-#nav-top{
+#nav-top {
   margin-bottom: 10px;
+  .icon-notification {
+    color: #bbb;
+    background: #f9f9f9;
+  }
+  .avatar {
+    height: 36px;
+    width: 36px;
+  }
+  .ui.dropdown {
+    margin-left: 10px;
+    & > .dropdown.icon {
+      margin-left: 5px;
+    }
+    .menu {
+      left: auto;
+      right: 0;
+    }
+  }
 }
-#menu-button{
+
+#menu-button {
   padding: 0;
   height: 30px;
   width: 30px;
