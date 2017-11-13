@@ -36,6 +36,7 @@
   min-height: 100vh;
   padding: 10px;
   will-change: left;
+  transition: $linear;
   &.toggled {
     left: $sidebar-width;
   }
