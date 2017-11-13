@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Dropdown, Image, Input } from 'semantic-ui-react';
+import { Button, Dropdown, Image, Input, Popup } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -8,6 +8,8 @@ import { toggleSidebar as toggleSidebarAction } from '../actions';
 import './TopNav.css';
 
 const avatar = (<Image src="/assets/images/nan.jpg" avatar />);
+const notificationsTrigger = (
+  <Button circular className="icon-notification" icon="alarm" />);
 
 const TopNav = ({ toggleSidebar }) => (
   <div id="nav-top" className="flex-container">
@@ -25,7 +27,12 @@ const TopNav = ({ toggleSidebar }) => (
     />
     <div className="flex-item">
       <Link to="/login">
-        <Button circular className="icon-notification" icon="alarm" />
+        <Popup
+          trigger={notificationsTrigger}
+          content="Hello. This is a mini popup"
+          size="mini"
+          inverted
+        />
       </Link>
       <Dropdown trigger={avatar} pointing="top right">
         <Dropdown.Menu>
