@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import TopNav from './TopNav';
 import Sidebar from './Sidebar';
+import Inbox from './Inbox';
 import './Dashboard.css';
 
 const Dashboard = ({ isToggled }) => (
@@ -12,10 +13,7 @@ const Dashboard = ({ isToggled }) => (
       <TopNav />
       <Segment basic id="content">
         <h2>Dashboard</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis,
-          laudantium, quod. Accusantium, ad amet animi asperiores blanditiis
-          delectus doloremque, eos modi odio officiis perferendis quae quam
-          repellat, repellendus ut? Natus?</p>
+        <Inbox />
       </Segment>
     </div>
     <Sidebar />
