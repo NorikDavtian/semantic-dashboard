@@ -1,50 +1,69 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Table } from 'semantic-ui-react';
 // import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
-// import './Inbox.css';
+import { requestEmail, requestInbox } from '../actions';
+import { headers } from '../config/inbox';
+import './Inbox.css';
 
-const Inbox = ({ clickedRow }) => (
-  <Table singleLine>
-    <Table.Header>
-      <Table.Row>
-        <Table.HeaderCell>Name</Table.HeaderCell>
-        <Table.HeaderCell>Registration Date</Table.HeaderCell>
-        <Table.HeaderCell>E-mail address</Table.HeaderCell>
-        <Table.HeaderCell>Premium Plan</Table.HeaderCell>
-      </Table.Row>
-    </Table.Header>
-    <Table.Body>
-      <Table.Row onClick={clickedRow}>
-        <Table.Cell>John Lilki</Table.Cell>
-        <Table.Cell>September 14, 2013</Table.Cell>
-        <Table.Cell>jhlilk22@yahoo.com</Table.Cell>
-        <Table.Cell>No</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.Cell>Jamie Harington</Table.Cell>
-        <Table.Cell>January 11, 2014</Table.Cell>
-        <Table.Cell>jamieharingonton@yahoo.com</Table.Cell>
-        <Table.Cell>Yes</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.Cell>Jill Lewis</Table.Cell>
-        <Table.Cell>May 11, 2014</Table.Cell>
-        <Table.Cell>jilsewris22@yahoo.com</Table.Cell>
-        <Table.Cell>Yes</Table.Cell>
-      </Table.Row>
-    </Table.Body>
-  </Table>
-);
+class Inbox extends Component {
+  static propTypes = {
+    getInbox: PropTypes.func.isRequired,
+    getEmail: PropTypes.func.isRequired,
+    emails: PropTypes.array
+  };
 
-Inbox.propTypes = {
-  clickedRow: PropTypes.func.isRequired
-};
+  static defaultProps = {
+    emails: []
+  };
 
-const mapDispatchToProps = dispatch => ({
-  clickedRow: bindActionCreators(() => { console.log('TODO'); }, dispatch)
+  constructor(props) {
+    super(props);
+    this.props.getInbox();
+  }
+
+  renderTableRow = email => (
+    <Table.Row
+      key={email.id}
+      onClick={() => this.props.getEmail({ id: email.id })}
+    >
+      <Table.Cell>{email.sender}</Table.Cell>
+      <Table.Cell>{email.subject}</Table.Cell>
+      <Table.Cell>{`${email.text.substring(0, 100)}...`}</Table.Cell>
+      <Table.Cell>{email.date}</Table.Cell>
+    </Table.Row>
+  );
+
+  render() {
+    const { emails } = this.props;
+    return (
+      <Table singleLine>
+        <Table.Header>
+          <Table.Row>
+            {
+              headers.map(
+                header => (
+                  <Table.HeaderCell key={header}>{header}</Table.HeaderCell>))
+            }
+          </Table.Row>
+        </Table.Header>
+        <Table.Body>
+          {emails.map(this.renderTableRow)}
+        </Table.Body>
+      </Table>
+    );
+  }
+}
+
+const mapStateToProps = state => ({
+  emails: state.inbox.emails
 });
 
-export default connect(null, mapDispatchToProps)(Inbox);
+const mapDispatchToProps = dispatch => ({
+  getInbox: bindActionCreators(requestInbox, dispatch),
+  getEmail: bindActionCreators(requestEmail, dispatch)
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Inbox);
