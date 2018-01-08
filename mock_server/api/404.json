@@ -1,0 +1,10 @@
+{
+  "error": {
+    "code": 404,
+    "status": "NOT_FOUND",
+    "message": "email not found",
+    "errors": [
+      "email not found"
+    ]
+  }
+}
