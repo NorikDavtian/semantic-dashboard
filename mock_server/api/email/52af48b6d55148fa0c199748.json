@@ -1,0 +1,21 @@
+{
+  "mid": "9056107.1075840200683.JavaMail.evans@thyme",
+  "sender": "rosalee.fleming@enron.com",
+  "fpath": "enron_mail_20110402/maildir/lay-k/all_documents/1.",
+  "fname": "1.",
+  "to": [
+    "mmilken@knowledgeu.com"
+  ],
+  "text": "Hi -\n\nWe did receive the e-mail.\n\nRosalee for Ken Lay\n\n\n\n\n\n\"Michael Milken\" <mmilken@knowledgeu.com> on 07/02/99 10:21:40 AM\nTo: Kenneth Lay/Corp/Enron@Enron\ncc:  \nSubject: testing\n\n\n\n\n\n\n",
+  "id": "52af48b6d55148fa0c199748",
+  "subject": "Re: testing",
+  "ctype": "text/plain; charset=us-ascii",
+  "cc": [],
+  "bcc": [],
+  "folder": "all_documents",
+  "replyto": null,
+  "recipients": [
+    "mmilken@knowledgeu.com"
+  ],
+  "date": "1999-07-02 03:34:00-07:00"
+}
