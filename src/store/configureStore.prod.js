@@ -1,13 +1,15 @@
 import { applyMiddleware, compose, createStore } from 'redux';
-import thunk from 'redux-thunk';
 import createHistory from 'history/createBrowserHistory';
 import { routerMiddleware } from 'react-router-redux';
+import { createEpicMiddleware } from 'redux-observable';
 import rootReducer from '../reducers';
-// @todo import api middleware
+import rootEpic from './epics';
 
 const configureStore = (preloadedState) => {
   const history = createHistory();
-  const middleware = [routerMiddleware(history), thunk];
+  const middleware = [
+    routerMiddleware(history),
+    createEpicMiddleware(rootEpic)];
 
   const storeEnhancer = compose(
     applyMiddleware(...middleware)
@@ -21,6 +23,5 @@ const configureStore = (preloadedState) => {
 
   return store;
 };
-
 
 export default configureStore;

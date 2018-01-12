@@ -1,22 +1,21 @@
 import React from 'react';
-import { Segment } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Route, Switch } from 'react-router-dom';
 import TopNav from './TopNav';
 import Sidebar from './Sidebar';
+import Inbox from './Inbox';
 import './Dashboard.css';
+import Email from './Email';
 
 const Dashboard = ({ isToggled }) => (
   <div id="dashboard">
     <div id="main" className={isToggled ? 'toggled' : ''}>
       <TopNav />
-      <Segment basic id="content">
-        <h2>Dashboard</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis,
-          laudantium, quod. Accusantium, ad amet animi asperiores blanditiis
-          delectus doloremque, eos modi odio officiis perferendis quae quam
-          repellat, repellendus ut? Natus?</p>
-      </Segment>
+      <Switch>
+        <Route exact path="/" component={Inbox} />
+        <Route path="/email/:id" component={Email} />
+      </Switch>
     </div>
     <Sidebar />
   </div>
