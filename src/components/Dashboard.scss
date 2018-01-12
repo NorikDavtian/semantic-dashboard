@@ -1,5 +1,11 @@
 @import "../constants";
 
+#app {
+  min-height: 100vh;
+  display: flex;
+  will-change: width;
+}
+
 #dashboard {
   .flex-container {
     display: flex;

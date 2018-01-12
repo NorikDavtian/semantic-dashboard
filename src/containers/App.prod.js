@@ -7,7 +7,7 @@ import LoginForm from '../components/Login';
 const App = () => (
   <div id="app">
     <Switch>
-      <Route exact path="/" component={Dashboard} />
+      <Route path="/" component={Dashboard} />
       <Route exact path="/login" component={LoginForm} />
     </Switch>
     <Route exact path="/admin" component={Admin} />
