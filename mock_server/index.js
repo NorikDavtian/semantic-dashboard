@@ -1,6 +1,7 @@
 const micro = require('micro');
 
 const { send } = micro;
+const cors = require('micro-cors')();
 const { router, get } = require('microrouter');
 const api = require('./api/');
 
@@ -13,9 +14,9 @@ const email = async (req, res) =>
 const notFound = async (req, res) =>
   send(res, 404, await api.notFound);
 
-module.exports = router(
+module.exports = cors(router(
   get('/api/inbox', inbox),
   get('/api/email/:id', email),
   get('/*', notFound)
-);
+));
 

@@ -6,6 +6,7 @@
     "history": "^4.7.2",
     "humps": "^2.0.1",
     "micro": "^9.0.2",
+    "micro-cors": "^0.1.0",
     "microrouter": "^3.0.0",
     "prop-types": "^15.6.0",
     "react": "^15.6.1",
