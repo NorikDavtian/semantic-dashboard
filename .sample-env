@@ -3,4 +3,4 @@
 #
 # to override .env use `npm run cp-env-local` to copy `.sample-env` to `.env.local`
 # https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#what-other-env-files-are-can-be-used
-REACT_APP_API_URL=http://localhost:4000
+REACT_APP_API_URL=http://localhost:5000
