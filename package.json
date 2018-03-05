@@ -1,6 +1,7 @@
 {
   "name": "semantic-dashboard",
   "version": "0.1.0",
+  "homepage": "https://norikdavtian.github.io/semantic-dashboard/",
   "dependencies": {
     "history": "^4.7.2",
     "humps": "^2.0.1",
@@ -32,6 +33,7 @@
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.3.0",
+    "gh-pages": "^1.1.0",
     "husky": "^0.14.3",
     "lint-staged": "^4.2.1",
     "node-sass": "^4.5.3",
@@ -53,7 +55,9 @@
     "start": "npm-run-all -p mock-server watch-css start-js",
     "start-js": "react-scripts start",
     "test": "react-scripts test --env=jsdom",
-    "watch-css": "npm run build-css && node-sass src/ -o src/ --output-style expanded --watch --recursive"
+    "watch-css": "npm run build-css && node-sass src/ -o src/ --output-style expanded --watch --recursive",
+    "predeploy": "npm run build-css && npm run build",
+    "deploy": "gh-pages -d build"
   },
   "lint-staged": {
     "*.js": [
