@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Route, Switch } from 'react-router-dom';
+import { home } from '../config';
 import TopNav from './TopNav';
 import Sidebar from './Sidebar';
 import Inbox from './Inbox';
@@ -13,8 +14,8 @@ const Dashboard = ({ isToggled }) => (
     <div id="main" className={isToggled ? 'toggled' : ''}>
       <TopNav />
       <Switch>
-        <Route exact path="/" component={Inbox} />
-        <Route path="/email/:id" component={Email} />
+        <Route exact path={`${home}/`} component={Inbox} />
+        <Route path={`${home}/email/:id`} component={Email} />
       </Switch>
     </div>
     <Sidebar />

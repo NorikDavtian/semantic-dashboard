@@ -13,17 +13,17 @@ import {
   Visibility
 } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
+import { home } from '../config';
 
 const FixedMenu = () => (
   <Menu fixed="top" size="large">
     <Container>
       <Menu.Item as="a" active>Home</Menu.Item>
-      <Menu.Item as="span"><Link to="/admin">Admin</Link></Menu.Item>
       <Menu.Item as="a">Company</Menu.Item>
       <Menu.Item as="a">Careers</Menu.Item>
       <Menu.Menu position="right">
         <Menu.Item className="item">
-          <Link to="/login"><Button>Log in</Button></Link>
+          <Link to={`${home}/login`}><Button>Log in</Button></Link>
         </Menu.Item>
         <Menu.Item>
           <Button as="a" primary>Sign Up</Button>
@@ -61,11 +61,10 @@ class HomepageLayout extends Component {
             <Container>
               <Menu inverted pointing secondary size="large">
                 <Menu.Item as="a" active>Home</Menu.Item>
-                <Menu.Item as="span"><Link to="/admin">Admin</Link></Menu.Item>
                 <Menu.Item as="a">Company</Menu.Item>
                 <Menu.Item as="a">Careers</Menu.Item>
                 <Menu.Item position="right">
-                  <Link to="/login"><Button inverted>Log in</Button></Link>
+                  <Link to={`${home}/login`}><Button inverted>Log in</Button></Link>
                   <Button as="a" inverted style={{ marginLeft: '0.5em' }}>Sign
                     Up</Button>
                 </Menu.Item>
@@ -121,7 +120,7 @@ class HomepageLayout extends Component {
                 <Image
                   bordered
                   size="large"
-                  src="/assets/images/white-image.png"
+                  src={`${home}/assets/images/white-image.png`}
                 />
               </Grid.Column>
             </Grid.Row>
@@ -146,7 +145,7 @@ class HomepageLayout extends Component {
                 <Header as="h3" style={{ fontSize: '2em' }}>"I shouldn't have
                   gone with their competitor."</Header>
                 <p style={{ fontSize: '1.33em' }}>
-                  <Image avatar src="/assets/images/nan.jpg" />
+                  <Image avatar src={`${home}/assets/images/nan.jpg`} />
                   <b>Nan</b> Chief Fun Officer Acme Toys
                 </p>
               </Grid.Column>

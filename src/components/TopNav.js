@@ -4,10 +4,11 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
+import { home } from '../config';
 import { toggleSidebar as toggleSidebarAction } from '../actions';
 import './TopNav.css';
 
-const avatar = (<Image src="/assets/images/nan.jpg" avatar />);
+const avatar = (<Image src={`${home}/assets/images/nan.jpg`} avatar />);
 const notificationsTrigger = (
   <Button circular className="icon-notification" icon="alarm" />);
 
@@ -26,7 +27,7 @@ const TopNav = ({ toggleSidebar }) => (
       placeholder="Search..."
     />
     <div className="flex-item">
-      <Link to="/login">
+      <Link to={`${home}/login`}>
         <Popup
           trigger={notificationsTrigger}
           content="Hello. This is a mini popup"

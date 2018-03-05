@@ -5,6 +5,7 @@ import {
   RECEIVE_ERROR_MESSAGE, RECEIVE_INBOX_SUCCESS,
   REQUEST_INBOX
 } from '../../actions';
+import { home } from '../../config';
 
 const getInboxEpic = action$ =>
   action$.ofType(REQUEST_INBOX).mergeMap(() =>
@@ -18,7 +19,7 @@ const getInboxEpic = action$ =>
         type: RECEIVE_ERROR_MESSAGE,
         error
       },
-      push('/login')
+      push(`${home}/login`)
     ]))
   );
 
