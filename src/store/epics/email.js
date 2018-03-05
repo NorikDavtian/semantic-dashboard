@@ -5,6 +5,7 @@ import {
   RECEIVE_EMAIL_SUCCESS, RECEIVE_ERROR_MESSAGE,
   REQUEST_EMAIL
 } from '../../actions';
+import { home } from '../../config';
 
 const getEmailEpic = action$ =>
   action$.ofType(REQUEST_EMAIL).mergeMap(({ id }) =>
@@ -13,13 +14,13 @@ const getEmailEpic = action$ =>
         type: RECEIVE_EMAIL_SUCCESS,
         email: response
       },
-      push(`/email/${id}`)
+      push(`${home}/email/${id}`)
     ]).catch(error => Observable.from([
       {
         type: RECEIVE_ERROR_MESSAGE,
         error
       },
-      push('/')
+      push(`${home}/`)
     ]))
   );
 
