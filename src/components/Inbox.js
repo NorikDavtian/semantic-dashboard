@@ -4,14 +4,14 @@ import { headers } from '../config/inbox';
 import './Inbox.css';
 
 class Inbox extends Component {
+  static defaultProps = {
+    emails: []
+  };
+
   constructor(props) {
     super(props);
     console.log('props from inbox', props);
   }
-
-  static defaultProps = {
-    emails: []
-  };
 
   renderTableRow = email => (
     <Table.Row
