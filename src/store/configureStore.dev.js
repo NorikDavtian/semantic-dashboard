@@ -1,32 +1,31 @@
-import { applyMiddleware, compose, createStore } from 'redux';
-import createHistory from 'history/createBrowserHistory';
-import { routerMiddleware } from 'react-router-redux';
-import { createLogger } from 'redux-logger';
-import { createEpicMiddleware } from 'redux-observable';
-import rootReducer from '../reducers';
-import DevTools from '../containers/devTools';
-import rootEpic from './epics';
+import { createBrowserHistory } from 'history';
+import PouchDB from 'pouchdb';
+import pouchdbDebug from 'pouchdb-debug';
 
-const configureStore = (preloadedState) => {
-  const history = createHistory();
-  const middleware = [
-    routerMiddleware(history),
-    createEpicMiddleware(rootEpic),
-    createLogger()];
+window.PouchDB = PouchDB;
+console.log('putch', PouchDB);
+console.log(process.env);
+PouchDB.plugin(pouchdbDebug);
 
-  const storeEnhancer = compose(
-    applyMiddleware(...middleware),
-    DevTools.instrument()
-  );
+const { DB_NAME } = process.env;
+// @docs https://pouchdb.com/guides/databases.html
+const db = new PouchDB('kittens');
+console.log(db);
 
-  // will need preloadedState later for i18n
-  const store = createStore(rootReducer, preloadedState, storeEnhancer);
-  store.history = history;
 
-  console.log('Initial state:');
-  console.log(store.getState());
+console.log('DB_NAME');
+console.log(DB_NAME);
+PouchDB.debug.enable('*');
 
-  return store;
+const configureStore = () => {
+  db.history = createBrowserHistory();
+
+  db.info().then((info) => {
+    console.log(`${DB_NAME} Database initialized`);
+    console.log(info);
+  });
+
+  return db;
 };
 
 export default configureStore;

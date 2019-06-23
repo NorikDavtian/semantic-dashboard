@@ -1,14 +1,8 @@
 import React, { Component } from 'react';
 import { Menu } from 'semantic-ui-react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import './Sidebar.css';
 
 class Sidebar extends Component {
-  static propTypes = {
-    isToggled: PropTypes.bool.isRequired
-  };
-
   handleItemClick = name => this.setState({ activeItem: name });
 
   render() {
@@ -99,8 +93,4 @@ class Sidebar extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  isToggled: state.isSidebarToggled
-});
-
-export default connect(mapStateToProps)(Sidebar);
+export default Sidebar;

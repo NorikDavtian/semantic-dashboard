@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { ConnectedRouter } from 'react-router-redux';
+import { BrowserRouter as Router } from 'react-router-dom';
 import 'semantic-ui-css/semantic.min.css';
 import configureStore from './store/configureStore';
 import App from './containers/App';
@@ -11,10 +10,8 @@ const store = configureStore();
 window.store = store;
 
 ReactDOM.render(
-  <Provider store={store}>
-    <ConnectedRouter history={store.history}>
-      <App />
-    </ConnectedRouter>
-  </Provider>,
+  <Router>
+    <App store={store} />
+  </Router>,
   document.getElementById('root')
 );

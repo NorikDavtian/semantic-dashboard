@@ -1,8 +1,8 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
+import { home } from '../config';
 import Dashboard from '../components/Dashboard';
 import LoginForm from '../components/Login';
-import { home } from '../config';
 
 const App = () => (
   <div id="app">

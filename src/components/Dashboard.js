@@ -1,6 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import { Route, Switch } from 'react-router-dom';
 import { home } from '../config';
 import TopNav from './TopNav';
@@ -22,12 +20,4 @@ const Dashboard = ({ isToggled }) => (
   </div>
 );
 
-Dashboard.propTypes = {
-  isToggled: PropTypes.bool.isRequired
-};
-
-const mapStateToProps = state => ({
-  isToggled: state.isSidebarToggled
-});
-
-export default connect(mapStateToProps)(Dashboard);
+export default Dashboard;

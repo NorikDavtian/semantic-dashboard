@@ -1,10 +1,6 @@
 import React from 'react';
 import { Segment } from 'semantic-ui-react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import { requestEmail, requestInbox } from '../actions';
 import './Email.css';
 import { home } from '../config';
 
@@ -24,23 +20,4 @@ const Email = ({ email }) => (
   </Segment>
 );
 
-Email.propTypes = {
-  // getInbox: PropTypes.func.isRequired,
-  // getEmail: PropTypes.func.isRequired,
-  email: PropTypes.object
-};
-
-Email.defaultProps = {
-  email: {}
-};
-
-const mapStateToProps = state => ({
-  email: state.email.details
-});
-
-const mapDispatchToProps = dispatch => ({
-  getInbox: bindActionCreators(requestInbox, dispatch),
-  getEmail: bindActionCreators(requestEmail, dispatch)
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Email);
+export default Email;

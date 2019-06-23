@@ -1,1 +1,1 @@
-exports.home = process.env.REACT_APP_HOMEPAGE || '';
+exports.home = process.env.HOMEPAGE || '';

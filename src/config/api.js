@@ -1,8 +1,8 @@
-const baseUrl = process.env.REACT_APP_API_URL;
+const baseUrl = process.env.API_URL;
 
 if (!baseUrl) {
   throw new Error(
-    'process.env.REACT_APP_API_URL is "undefined", try `npm run postinstall`'
+    'process.env.API_URL is "undefined", try `npm run postinstall`'
   );
 }
 

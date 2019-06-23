@@ -1,26 +1,12 @@
 import React, { Component } from 'react';
 import { Segment, Table } from 'semantic-ui-react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import PropTypes from 'prop-types';
-import { requestEmail, requestInbox } from '../actions';
 import { headers } from '../config/inbox';
 import './Inbox.css';
 
 class Inbox extends Component {
-  static propTypes = {
-    getInbox: PropTypes.func.isRequired,
-    getEmail: PropTypes.func.isRequired,
-    emails: PropTypes.array
-  };
-
-  static defaultProps = {
-    emails: []
-  };
-
   constructor(props) {
     super(props);
-    this.props.getInbox();
+    console.log('props from inbox', props);
   }
 
   renderTableRow = email => (
@@ -59,13 +45,4 @@ class Inbox extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  emails: state.inbox.emails
-});
-
-const mapDispatchToProps = dispatch => ({
-  getInbox: bindActionCreators(requestInbox, dispatch),
-  getEmail: bindActionCreators(requestEmail, dispatch)
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Inbox);
+export default Inbox;
