@@ -3,18 +3,14 @@ import PouchDB from 'pouchdb';
 import pouchdbDebug from 'pouchdb-debug';
 
 window.PouchDB = PouchDB;
-console.log('putch', PouchDB);
-console.log(process.env);
 PouchDB.plugin(pouchdbDebug);
 
-const { DB_NAME } = process.env;
+// const { DB_NAME } = process.env;
+const DB_NAME = 'mydb';
 // @docs https://pouchdb.com/guides/databases.html
-const db = new PouchDB('kittens');
-console.log(db);
+const db = new PouchDB(DB_NAME);
+console.log('Booted mydb', db);
 
-
-console.log('DB_NAME');
-console.log(DB_NAME);
 PouchDB.debug.enable('*');
 
 const configureStore = () => {
