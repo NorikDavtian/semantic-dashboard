@@ -10,8 +10,7 @@ const notificationsTrigger = (
 
 const TopNav = ({ store }) => {
   const toggleSidebar = () => store.get('Sidebar').then((sidebar) => {
-    console.log('sidebar.isToggled', sidebar.isToggled);
-    store.put(Object.assign(sidebar, { isToggled: !sidebar.isToggled }));
+    store.put(Object.assign(sidebar, { isToggledOpen: !sidebar.isToggledOpen }));
   });
 
   return (

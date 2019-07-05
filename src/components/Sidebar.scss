@@ -14,7 +14,7 @@
   min-height: 100vh;
   will-change: left;
   transition: $linear;
-  &.toggled {
+  &.open {
     left: 0
   }
 }

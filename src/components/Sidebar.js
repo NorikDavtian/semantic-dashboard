@@ -3,22 +3,30 @@ import { Menu } from 'semantic-ui-react';
 import './Sidebar.css';
 
 class Sidebar extends Component {
+  static get name() {
+    return 'Sidebar';
+  }
+
   state = {
-    _id: 'Sidebar',
-    isToggled: true
+    _id: Sidebar.name,
+    isToggledOpen: true
   };
 
-  componentDidMount() {
+  async componentWillMount() {
     const { store } = this.props;
-    // @TODO better handle initial state
-    store.put(this.state);
+    try {
+      const storedState = await store.get(Sidebar.name);
+      this.setState(storedState);
+    } catch (err) {
+      await store.put(this.state);
+    }
     store.changes({
       since: 'now',
       live: true,
       include_docs: true
     }).on('change', (change) => {
       // change.id contains the doc id, change.doc contains the doc
-      if (change.id === 'Sidebar') {
+      if (change.id === Sidebar.name) {
         this.setState(change.doc);
       }
     }).on('error', error => console.error(error));
@@ -27,10 +35,10 @@ class Sidebar extends Component {
   handleItemClick = name => this.setState({ activeItem: name });
 
   render() {
-    const { activeItem, isToggled } = this.state || {};
+    const { activeItem, isToggledOpen } = this.state || {};
 
     return (
-      <Menu id="sidebar" vertical className={isToggled ? 'toggled' : ''}>
+      <Menu id="sidebar" vertical className={isToggledOpen ? 'open' : ''}>
         <Menu.Item>
           <Menu.Header>Products</Menu.Header>
 

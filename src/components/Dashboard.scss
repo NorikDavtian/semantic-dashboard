@@ -43,7 +43,7 @@
   padding: 10px;
   will-change: left;
   transition: $linear;
-  &.toggled {
+  &.open {
     left: $sidebar-width;
   }
 }

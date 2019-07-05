@@ -9,32 +9,50 @@ import Email from './Email';
 
 
 class Dashboard extends Component {
+  static get name() {
+    return 'Dashboard';
+  }
+
   state = {
-    _id: 'Dashboard',
-    isSidebarToggled: true
+    _id: Dashboard.name,
+    isSidebarToggledOpen: true
   };
 
-  componentDidMount() {
+  async componentWillMount() {
     const { store } = this.props;
-    // @TODO better handle initial state
-    store.put(this.state);
+    let storedState;
+    try {
+      storedState = await store.get(Dashboard.name);
+      if (storedState) {
+        this.setState(storedState);
+      }
+    } catch (err) {
+      await store.put(this.state);
+    }
     store.changes({
       since: 'now',
       live: true,
       include_docs: true
     }).on('change', (change) => {
       if (change.id === 'Sidebar') {
-        this.setState({ isSidebarToggled: change.doc.isToggled });
+        const updatedState = { isSidebarToggledOpen: change.doc.isToggledOpen };
+        this.updateState(store, updatedState);
       }
     }).on('error', error => console.error(error));
   }
 
+  updateState = async (store, updatedState) => {
+    this.setState(updatedState);
+    const doc = await store.get(Dashboard.name);
+    store.put(Object.assign(doc, updatedState));
+  };
+
   render() {
     const { store } = this.props;
-    const { isSidebarToggled } = this.state;
+    const { isSidebarToggledOpen } = this.state;
     return (
       <div id="dashboard">
-        <div id="main" className={isSidebarToggled ? 'toggled' : ''}>
+        <div id="main" className={isSidebarToggledOpen ? 'open' : ''}>
           <TopNav store={store} />
           <Switch>
             <Route exact path={`${home}/`} component={Inbox} store={store} />
