@@ -15,7 +15,7 @@ export const getEmail = async (emailId) => {
     console.log('response: ', body);
     return camelizeKeys(body);
   }
-  throw new Error('Can not fetch bookings.');
+  throw new Error('Can not fetch email.');
 };
 
 export default {};

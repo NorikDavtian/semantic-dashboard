@@ -17,7 +17,7 @@ class Sidebar extends Component {
     try {
       const storedState = await store.get(Sidebar.name);
       this.setState(storedState);
-    } catch (err) {
+    } catch (_err) {
       await store.put(this.state);
     }
     store.changes({

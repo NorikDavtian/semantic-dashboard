@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { home } from '../config';
 import TopNav from './TopNav';
 import Sidebar from './Sidebar';
 import Inbox from './Inbox';
@@ -26,7 +25,7 @@ class Dashboard extends Component {
       if (storedState) {
         this.setState(storedState);
       }
-    } catch (err) {
+    } catch (_err) {
       await store.put(this.state);
     }
     store.changes({
@@ -55,8 +54,8 @@ class Dashboard extends Component {
         <div id="main" className={isSidebarToggledOpen ? 'open' : ''}>
           <TopNav store={store} />
           <Switch>
-            <Route exact path={`${home}/`} component={Inbox} store={store} />
-            <Route path={`${home}/email/:id`} component={Email} store={store} />
+            <Route exact path={'/'} component={() => <Inbox store={store} />} />
+            <Route path={'/email/:id'} component={() => <Email store={store} />} />
           </Switch>
         </div>
         <Sidebar store={store} />

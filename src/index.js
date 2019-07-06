@@ -7,7 +7,6 @@ import App from './containers/App';
 import './index.css';
 
 const store = configureStore();
-window.store = store;
 
 ReactDOM.render(
   <Router>

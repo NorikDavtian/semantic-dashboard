@@ -1,27 +1,27 @@
 import { createBrowserHistory } from 'history';
 import PouchDB from 'pouchdb';
 import pouchdbDebug from 'pouchdb-debug';
+import API from '../api';
 
 window.PouchDB = PouchDB;
 PouchDB.plugin(pouchdbDebug);
 
-// const { DB_NAME } = process.env;
-const DB_NAME = 'mydb';
+const { REACT_APP_DB_NAME } = process.env;
 // @docs https://pouchdb.com/guides/databases.html
-const db = new PouchDB(DB_NAME);
-console.log('Booted mydb', db);
+const store = new PouchDB(REACT_APP_DB_NAME);
 
 PouchDB.debug.enable('*');
 
 const configureStore = () => {
-  db.history = createBrowserHistory();
+  store.history = createBrowserHistory();
+  store.API = API;
 
-  db.info().then((info) => {
-    console.log(`${DB_NAME} Database initialized`);
+  store.info().then((info) => {
+    console.log(`${REACT_APP_DB_NAME} Database initialized`);
     console.log(info);
   });
 
-  return db;
+  return store;
 };
 
 export default configureStore;
