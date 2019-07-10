@@ -5,14 +5,24 @@ import './Inbox.css';
 
 const Inbox = ({ store }) => {
   const [emails, setEmails] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
 
   useEffect(() => {
-    async function fetchData() {
-      const list = await store.API.inbox.getEmails();
-      setEmails(list);
-    }
+    const fetchData = async () => {
+      setIsError(false);
+      setIsLoading(true);
+      try {
+        const data = await store.API.inbox.getEmails();
+        setEmails(data);
+      } catch (error) {
+        setIsError(true);
+      }
+      setIsLoading(false);
+    };
+
     fetchData();
-  }, []);
+  }, [store]);
 
   const renderTableRow = email => (
     <Table.Row
@@ -29,9 +39,9 @@ const Inbox = ({ store }) => {
     </Table.Row>
   );
 
-  return emails.length === 0 ? (<div>Loading</div>) : (
+  return isLoading ? (<div>Loading...</div>) : (
     <Segment basic id="content">
-      <h2>Dashboard</h2>
+      {isError && <div className={'error'}>Something went wrong ...</div>}
       <Table singleLine>
         <Table.Header>
           <Table.Row>
