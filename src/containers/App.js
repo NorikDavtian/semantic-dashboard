@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Dashboard from '../components/Dashboard';
+import Dashboard from './Dashboard';
 import LoginForm from '../components/Login';
 
 const App = ({ store }) => (

@@ -1,36 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Segment, Table } from 'semantic-ui-react';
 import { headers } from '../config/inbox';
 import './Inbox.css';
 
-const Inbox = ({ store }) => {
-  const [emails, setEmails] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      setIsError(false);
-      setIsLoading(true);
-      try {
-        const data = await store.API.inbox.getEmails();
-        setEmails(data);
-      } catch (error) {
-        setIsError(true);
-      }
-      setIsLoading(false);
-    };
-
-    fetchData();
-  }, [store]);
-
+const Inbox = (props) => {
+  const { emails, emailHandler } = props;
   const renderTableRow = email => (
     <Table.Row
       key={email.id}
-      onClick={() => store.history.push({
-        pathname: `/email/${email.id}`,
-        state: { fromInbox: true }
-      })}
+      onClick={() => emailHandler(email.id)}
     >
       <Table.Cell>{email.sender}</Table.Cell>
       <Table.Cell>{email.subject}</Table.Cell>
@@ -39,9 +17,8 @@ const Inbox = ({ store }) => {
     </Table.Row>
   );
 
-  return isLoading ? (<div>Loading...</div>) : (
+  return (
     <Segment basic id="content">
-      {isError && <div className={'error'}>Something went wrong ...</div>}
       <Table singleLine>
         <Table.Header>
           <Table.Row>
