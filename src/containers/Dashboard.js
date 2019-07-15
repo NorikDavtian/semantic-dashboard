@@ -62,10 +62,20 @@ const Dashboard = ({ store }) => {
   console.log('error', error);
   console.log('isLoading', isLoading);
 
-  const emailHandler = id => store.history.push({
-    pathname: `/email/${id}`,
-    state: { fromInbox: true }
-  });
+  const emailHandler = async (id) => {
+    try {
+      const data = await store.API.email.getEmail(id);
+      console.log('email', data);
+      store.history.push({
+        pathname: `/email/${id}`,
+        state: { fromInbox: true }
+      });
+      this.render();
+    } catch (_err) {
+      console.error(_err);
+      setError(`Cannot fetch email ${id}`);
+    }
+  };
 
   const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
 
