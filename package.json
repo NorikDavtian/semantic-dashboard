@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "homepage": "https://norikdavtian.github.io/semantic-dashboard",
   "dependencies": {
+    "@reach/router": "^1.2.1",
     "history": "^4.7.2",
     "humps": "^2.0.1",
     "micro": "^9.0.2",
@@ -12,7 +13,6 @@
     "pouchdb-debug": "^7.1.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-router-dom": "^4.3.1",
     "semantic-ui-css": "^2.2.12",
     "semantic-ui-react": "^0.87.2"
   },
