@@ -1,106 +1,94 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { Menu } from 'semantic-ui-react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import './Sidebar.css';
 
-class Sidebar extends Component {
-  static propTypes = {
-    isToggled: PropTypes.bool.isRequired
+const Sidebar = ({ isToggledOpen }) => {
+  const [activeItem, setActiveItem] = useState('');
+  const handleItemClick = (e, { name }) => {
+    setActiveItem(name);
   };
 
-  handleItemClick = name => this.setState({ activeItem: name });
+  return (
+    <Menu id="sidebar" vertical className={isToggledOpen ? 'open' : ''}>
+      <Menu.Item>
+        <Menu.Header>Products</Menu.Header>
 
-  render() {
-    const { isToggled } = this.props;
-    const { activeItem } = this.state || {};
+        <Menu.Menu>
+          <Menu.Item
+            name="enterprise"
+            active={activeItem === 'enterprise'}
+            onClick={handleItemClick}
+          />
+          <Menu.Item
+            name="consumer"
+            active={activeItem === 'consumer'}
+            onClick={handleItemClick}
+          />
+        </Menu.Menu>
+      </Menu.Item>
 
-    return (
-      <Menu id="sidebar" vertical className={isToggled ? 'toggled' : ''}>
-        <Menu.Item>
-          <Menu.Header>Products</Menu.Header>
+      <Menu.Item>
+        <Menu.Header>CMS Solutions</Menu.Header>
 
-          <Menu.Menu>
-            <Menu.Item
-              name="enterprise"
-              active={activeItem === 'enterprise'}
-              onClick={this.handleItemClick}
-            />
-            <Menu.Item
-              name="consumer"
-              active={activeItem === 'consumer'}
-              onClick={this.handleItemClick}
-            />
-          </Menu.Menu>
-        </Menu.Item>
+        <Menu.Menu>
+          <Menu.Item
+            name="rails"
+            active={activeItem === 'rails'}
+            onClick={handleItemClick}
+          />
+          <Menu.Item
+            name="python"
+            active={activeItem === 'python'}
+            onClick={handleItemClick}
+          />
+          <Menu.Item
+            name="php"
+            active={activeItem === 'php'}
+            onClick={handleItemClick}
+          />
+        </Menu.Menu>
+      </Menu.Item>
 
-        <Menu.Item>
-          <Menu.Header>CMS Solutions</Menu.Header>
+      <Menu.Item>
+        <Menu.Header>Hosting</Menu.Header>
 
-          <Menu.Menu>
-            <Menu.Item
-              name="rails"
-              active={activeItem === 'rails'}
-              onClick={this.handleItemClick}
-            />
-            <Menu.Item
-              name="python"
-              active={activeItem === 'python'}
-              onClick={this.handleItemClick}
-            />
-            <Menu.Item
-              name="php"
-              active={activeItem === 'php'}
-              onClick={this.handleItemClick}
-            />
-          </Menu.Menu>
-        </Menu.Item>
+        <Menu.Menu>
+          <Menu.Item
+            name="shared"
+            active={activeItem === 'shared'}
+            onClick={handleItemClick}
+          />
+          <Menu.Item
+            name="dedicated"
+            active={activeItem === 'dedicated'}
+            onClick={handleItemClick}
+          />
+        </Menu.Menu>
+      </Menu.Item>
 
-        <Menu.Item>
-          <Menu.Header>Hosting</Menu.Header>
+      <Menu.Item>
+        <Menu.Header>Support</Menu.Header>
 
-          <Menu.Menu>
-            <Menu.Item
-              name="shared"
-              active={activeItem === 'shared'}
-              onClick={this.handleItemClick}
-            />
-            <Menu.Item
-              name="dedicated"
-              active={activeItem === 'dedicated'}
-              onClick={this.handleItemClick}
-            />
-          </Menu.Menu>
-        </Menu.Item>
+        <Menu.Menu>
+          <Menu.Item
+            name="email"
+            active={activeItem === 'email'}
+            onClick={handleItemClick}
+          >
+            E-mail Support
+          </Menu.Item>
 
-        <Menu.Item>
-          <Menu.Header>Support</Menu.Header>
+          <Menu.Item
+            name="faq"
+            active={activeItem === 'faq'}
+            onClick={handleItemClick}
+          >
+            FAQs
+          </Menu.Item>
+        </Menu.Menu>
+      </Menu.Item>
+    </Menu>
+  );
+};
 
-          <Menu.Menu>
-            <Menu.Item
-              name="email"
-              active={activeItem === 'email'}
-              onClick={this.handleItemClick}
-            >
-              E-mail Support
-            </Menu.Item>
-
-            <Menu.Item
-              name="faq"
-              active={activeItem === 'faq'}
-              onClick={this.handleItemClick}
-            >
-              FAQs
-            </Menu.Item>
-          </Menu.Menu>
-        </Menu.Item>
-      </Menu>
-    );
-  }
-}
-
-const mapStateToProps = state => ({
-  isToggled: state.isSidebarToggled
-});
-
-export default connect(mapStateToProps)(Sidebar);
+export default Sidebar;

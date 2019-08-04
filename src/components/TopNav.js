@@ -1,11 +1,7 @@
 import React from 'react';
 import { Button, Dropdown, Image, Input, Popup } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import PropTypes from 'prop-types';
+import { Link } from '@reach/router';
 import { home } from '../config';
-import { toggleSidebar as toggleSidebarAction } from '../actions';
 import './TopNav.css';
 
 const avatar = (<Image src={`${home}/assets/images/nan.jpg`} avatar />);
@@ -54,12 +50,4 @@ const TopNav = ({ toggleSidebar }) => (
   </div>
 );
 
-TopNav.propTypes = {
-  toggleSidebar: PropTypes.func.isRequired
-};
-
-const mapDispatchToProps = dispatch => ({
-  toggleSidebar: bindActionCreators(toggleSidebarAction, dispatch)
-});
-
-export default connect(null, mapDispatchToProps)(TopNav);
+export default TopNav;

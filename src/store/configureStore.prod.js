@@ -1,26 +1,15 @@
-import { applyMiddleware, compose, createStore } from 'redux';
-import createHistory from 'history/createBrowserHistory';
-import { routerMiddleware } from 'react-router-redux';
-import { createEpicMiddleware } from 'redux-observable';
-import rootReducer from '../reducers';
-import rootEpic from './epics';
+import { createBrowserHistory } from 'history';
+import PouchDB from 'pouchdb';
+import API from '../api';
 
-const configureStore = (preloadedState) => {
-  const history = createHistory();
-  const middleware = [
-    routerMiddleware(history),
-    createEpicMiddleware(rootEpic)];
+const { REACT_APP_DB_NAME } = process.env;
+const store = new PouchDB(REACT_APP_DB_NAME);
 
-  const storeEnhancer = compose(
-    applyMiddleware(...middleware)
-  );
+PouchDB.debug.disable();
 
-  const store = createStore(rootReducer, preloadedState, storeEnhancer);
-  store.history = history;
-
-  console.log('Initial state:');
-  console.log(store.getState());
-
+const configureStore = () => {
+  store.history = createBrowserHistory();
+  store.API = API;
   return store;
 };
 

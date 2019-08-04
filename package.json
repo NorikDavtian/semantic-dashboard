@@ -3,30 +3,21 @@
   "version": "0.1.0",
   "homepage": "https://norikdavtian.github.io/semantic-dashboard",
   "dependencies": {
+    "@reach/router": "^1.2.1",
     "history": "^4.7.2",
     "humps": "^2.0.1",
     "micro": "^9.0.2",
     "micro-cors": "^0.1.0",
     "microrouter": "^3.0.0",
-    "prop-types": "^15.6.0",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
-    "react-redux": "^5.0.6",
-    "react-router-dom": "^4.2.2",
-    "react-router-redux": "^5.0.0-alpha.6",
-    "redux": "^3.7.2",
-    "redux-devtools": "^3.4.0",
-    "redux-devtools-dock-monitor": "^1.1.2",
-    "redux-devtools-log-monitor": "^1.3.0",
-    "redux-logger": "^3.0.6",
-    "redux-observable": "^0.17.0",
-    "rxjs": "^5.5.6",
+    "pouchdb": "^7.1.1",
+    "pouchdb-debug": "^7.1.1",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
     "semantic-ui-css": "^2.2.12",
-    "semantic-ui-react": "^0.73.1"
+    "semantic-ui-react": "^0.87.2"
   },
   "devDependencies": {
-    "babel-eslint": "^8.0.0",
-    "eslint": "^4.7.1",
+    "eslint": "^5.16.0",
     "eslint-config-airbnb": "^15.1.0",
     "eslint-config-react-app": "^2.0.0",
     "eslint-plugin-flowtype": "^2.35.1",
@@ -38,19 +29,19 @@
     "lint-staged": "^4.2.1",
     "node-sass": "^4.5.3",
     "npm-run-all": "^4.1.1",
-    "react-scripts": "1.0.13"
+    "react-scripts": "^3.0.1"
   },
   "scripts": {
     "build": "npm run minify-css && react-scripts build",
     "build-css": "node-sass src/ -o src/ --output-style expanded",
     "clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install",
-    "cp-env-local": "cp .sample-env .env.local && echo 'Coppied .sample-env -> .env.local'",
+    "cp-env-local": "cp .env.default .env.local && echo 'Coppied .env.default -> .env.local'",
     "eject": "react-scripts eject",
     "fixit": "eslint src/ --fix",
     "lint": "eslint src/",
     "minify-css": "node-sass src/ -o src/ --output-style compressed",
     "mock-server": "micro mock_server/ -p ${PORT:-5000}",
-    "postinstall": "[ -f '.env' ] || (cp .sample-env .env && echo 'Coppied .sample-env -> .env')",
+    "postinstall": "[ -f '.env' ] || (cp .env.default .env && echo 'Coppied .env.default -> .env')",
     "precommit": "lint-staged",
     "start": "npm-run-all -p mock-server watch-css start-js",
     "start-js": "react-scripts start",
@@ -63,6 +54,18 @@
     "*.js": [
       "eslint --fix",
       "git add"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
     ]
   }
 }

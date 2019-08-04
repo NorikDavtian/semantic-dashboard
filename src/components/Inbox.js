@@ -1,32 +1,24 @@
-import React, { Component } from 'react';
-import { Segment, Table } from 'semantic-ui-react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import PropTypes from 'prop-types';
-import { requestEmail, requestInbox } from '../actions';
+import React, { useEffect, useState } from 'react';
+import { Button, Segment, Table } from 'semantic-ui-react';
+import { navigate } from '@reach/router';
 import { headers } from '../config/inbox';
 import './Inbox.css';
 
-class Inbox extends Component {
-  static propTypes = {
-    getInbox: PropTypes.func.isRequired,
-    getEmail: PropTypes.func.isRequired,
-    emails: PropTypes.array
-  };
+const Inbox = (props) => {
+  const { service } = props;
+  const [emails, setEmails] = useState([]);
+  const [pageNo, setPageNo] = useState(1);
 
-  static defaultProps = {
-    emails: []
-  };
+  const linkHandler = id => navigate(`/email/${id}`);
 
-  constructor(props) {
-    super(props);
-    this.props.getInbox();
-  }
+  useEffect(() => {
+    service(pageNo, setEmails);
+  }, [service, pageNo]);
 
-  renderTableRow = email => (
+  const renderTableRow = email => (
     <Table.Row
       key={email.id}
-      onClick={() => this.props.getEmail({ id: email.id })}
+      onClick={() => linkHandler(email.id)}
     >
       <Table.Cell>{email.sender}</Table.Cell>
       <Table.Cell>{email.subject}</Table.Cell>
@@ -35,37 +27,29 @@ class Inbox extends Component {
     </Table.Row>
   );
 
-  render() {
-    const { emails } = this.props;
-    return (
-      <Segment basic id="content">
-        <h2>Dashboard</h2>
-        <Table singleLine>
-          <Table.Header>
-            <Table.Row>
-              {
-                headers.map(
-                  header => (
-                    <Table.HeaderCell key={header}>{header}</Table.HeaderCell>))
-              }
-            </Table.Row>
-          </Table.Header>
-          <Table.Body>
-            {emails.map(this.renderTableRow)}
-          </Table.Body>
-        </Table>
-      </Segment>
-    );
-  }
-}
+  return (
+    <Segment basic id="content">
+      <Table singleLine>
+        <Table.Header>
+          <Table.Row>
+            {
+              headers.map(
+                header => (
+                  <Table.HeaderCell key={header}>{header}</Table.HeaderCell>))
+            }
+          </Table.Row>
+        </Table.Header>
+        <Table.Body>
+          {emails.map(renderTableRow)}
+        </Table.Body>
+        <Table.Footer>
+          <Table.Row>
+            <Table.Cell> <Button onClick={() => setPageNo(2)}>Page 2</Button></Table.Cell>
+          </Table.Row>
+        </Table.Footer>
+      </Table>
+    </Segment>
+  );
+};
 
-const mapStateToProps = state => ({
-  emails: state.inbox.emails
-});
-
-const mapDispatchToProps = dispatch => ({
-  getInbox: bindActionCreators(requestInbox, dispatch),
-  getEmail: bindActionCreators(requestEmail, dispatch)
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Inbox);
+export default Inbox;

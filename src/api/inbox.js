@@ -11,10 +11,13 @@ export const getEmails = async (pageNo = 1) => {
 
   if (response.status === 200) {
     const body = await response.json();
-    console.log('response: ', body);
+    // console.log('response: ', body);
+    const res = camelizeKeys(body)
+    console.log('RES: ', res);
+
     return camelizeKeys(body);
   }
-  throw new Error('Can not fetch bookings.');
+  throw new Error('Can not fetch emails');
 };
 
 
