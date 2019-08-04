@@ -12,7 +12,6 @@ export const getEmail = async (emailId) => {
 
   if (response.status === 200) {
     const body = await response.json();
-    console.log('response: ', body);
     return camelizeKeys(body);
   }
   throw new Error('Can not fetch email.');
