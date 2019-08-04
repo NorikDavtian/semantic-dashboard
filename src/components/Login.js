@@ -7,7 +7,7 @@ import {
   Message,
   Segment
 } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
+import { Link } from '@reach/router';
 import { home } from '../config';
 import './Login.css';
 

@@ -1,14 +1,24 @@
-import React from 'react';
-import { Segment, Table } from 'semantic-ui-react';
+import React, { useEffect, useState } from 'react';
+import { Button, Segment, Table } from 'semantic-ui-react';
+import { navigate } from '@reach/router';
 import { headers } from '../config/inbox';
 import './Inbox.css';
 
 const Inbox = (props) => {
-  const { emails, emailHandler } = props;
+  const { service } = props;
+  const [emails, setEmails] = useState([]);
+  const [pageNo, setPageNo] = useState(1);
+
+  const linkHandler = id => navigate(`/email/${id}`);
+
+  useEffect(() => {
+    service(pageNo, setEmails);
+  }, [service, pageNo]);
+
   const renderTableRow = email => (
     <Table.Row
       key={email.id}
-      onClick={() => emailHandler(email.id)}
+      onClick={() => linkHandler(email.id)}
     >
       <Table.Cell>{email.sender}</Table.Cell>
       <Table.Cell>{email.subject}</Table.Cell>
@@ -32,6 +42,11 @@ const Inbox = (props) => {
         <Table.Body>
           {emails.map(renderTableRow)}
         </Table.Body>
+        <Table.Footer>
+          <Table.Row>
+            <Table.Cell> <Button onClick={() => setPageNo(2)}>Page 2</Button></Table.Cell>
+          </Table.Row>
+        </Table.Footer>
       </Table>
     </Segment>
   );
